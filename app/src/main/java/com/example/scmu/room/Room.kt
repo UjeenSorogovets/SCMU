@@ -36,6 +36,7 @@ class Room : AppCompatActivity() {
     }
 
     val adapter = GroupAdapter<GroupieViewHolder>()
+    var currentDoorStatus = 1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,18 +45,69 @@ class Room : AppCompatActivity() {
         supportActionBar?.title = "ROOM"
 
         fetchCurrentUser()
-        //fetchUsers()
 
-        /*DummyIncedents()
-        DummyUserStreams()*/
-
-        //listenForLatestMessages()
         UsersIncedents()
 
-        room_lock_switch.setOnClickListener {
-            Log.d(TAG,"SWITCH!!")
+        room_lock_switch.setOnCheckedChangeListener { buttonView, isChecked ->
+            val user = FirebaseAuth.getInstance().currentUser
+            val uid = user?.uid
+            var ref = FirebaseDatabase.getInstance().getReference("userStreams/$uid")
+            if(isChecked){
+                Log.d(TAG,"Standard Switch is on")
+
+                val userStream = UserStream(1,1)
+                ref.setValue(userStream)
+            }else{
+                Log.d(TAG,"Standard Switch is off")
+
+                val userStream = UserStream(0,1)
+                ref.setValue(userStream)
+            }
         }
+
+        listenForDoorStatus()
     }
+
+    private fun listenForDoorStatus() {
+        val fromId = FirebaseAuth.getInstance().uid
+        val ref = FirebaseDatabase.getInstance().getReference("/userStreams/$fromId")
+        ref.addChildEventListener(object: ChildEventListener {
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                Log.d(TAG, "USER STREAM ADDED!!!")
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+                Log.d(TAG, "USER STREAM CHANGED!!!")
+                if (p1!=null){
+                    val doorStatus = p0.getValue()
+                    if (doorStatus!=1L){
+                        room_status.setText("Opened")
+                        room_lock_switch.isEnabled=false
+                        room_lock_switch.isChecked=false
+
+                    }
+                    else{
+                        room_status.setText("Closed")
+                        room_lock_switch.isEnabled=true
+                    }
+                    currentDoorStatus = doorStatus as Long
+                    Log.d(TAG,p0.getValue().toString())
+                }
+       
+            }
+
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+
+            }
+            override fun onChildRemoved(p0: DataSnapshot) {
+
+            }
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
+    }
+
 
     val latestMessagesMap = HashMap<String, ChatMessage>()
     private fun refreshRecyclerViewMessages() {
