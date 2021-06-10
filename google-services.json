@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "847962141147",
+    "firebase_url": "https://gad-arduino-test1-default-rtdb.firebaseio.com",
+    "project_id": "gad-arduino-test1",
+    "storage_bucket": "gad-arduino-test1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847962141147:android:cf79963927c8e190a237fe",
+        "android_client_info": {
+          "package_name": "com.example.scmu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847962141147-b742rapb2fued8cf5ntvhbakpt6606v7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt_m9Q1xpPbj0FlytsZN3-eJtU5UpT11A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847962141147-b742rapb2fued8cf5ntvhbakpt6606v7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

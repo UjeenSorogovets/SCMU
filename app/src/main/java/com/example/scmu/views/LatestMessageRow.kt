@@ -9,9 +9,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.xwray.groupie.GroupieViewHolder
-
 import com.xwray.groupie.Item
-
 import kotlinx.android.synthetic.main.latest_message_row.view.*
 
 

@@ -81,9 +81,6 @@ class RegisterActivity : AppCompatActivity() {
         val email = findViewById<TextView>(R.id.email_edittext_register).text.toString()
         val password = findViewById<TextView>(R.id.password_edittext_register).text.toString()
 
-        Log.d("MyTagActivity", "testFun2")
-        Log.d("MyTagActivity", "Email is$email")
-        Log.d("MyTagActivity", "Password is$password")
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }

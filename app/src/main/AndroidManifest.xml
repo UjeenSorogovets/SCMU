@@ -8,26 +8,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ZoomPlus">
-        <activity android:name="com.example.scmu.messages.VideoCallActivity">
+        android:theme="@style/Theme.SCMU">
+        <activity android:name=".room.Room">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.scmu.messages.LatestMessagesActivity" />
         </activity>
-        <activity android:name="com.example.scmu.messages.LatestMessagesActivity">
+        <activity android:name=".messages.VideoCallActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.scmu.messages.LatestMessagesActivity" />
+        </activity>
+        <activity android:name=".messages.LatestMessagesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.scmu.registerlogin.RegisterActivity" />
-        <activity android:name="com.example.scmu.registerlogin.LoginActivity" />
-        <activity android:name="com.example.scmu.messages.NewMessageActivity">
+        <activity android:name=".registerlogin.RegisterActivity" />
+        <activity android:name=".registerlogin.LoginActivity" />
+        <activity android:name=".messages.NewMessageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.scmu.messages.LatestMessagesActivity" />
         </activity>
-        <activity android:name="com.example.scmu.messages.ChatLogActivity">
+        <activity android:name=".messages.ChatLogActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.scmu.messages.LatestMessagesActivity" />

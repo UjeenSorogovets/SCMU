@@ -16,7 +16,7 @@ android {
         viewBinding true
     }
     defaultConfig {
-        applicationId "com.example.zoomplus"
+        applicationId "com.example.scmu"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

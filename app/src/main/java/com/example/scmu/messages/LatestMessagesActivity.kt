@@ -11,6 +11,7 @@ import com.example.scmu.R
 import com.example.scmu.registerlogin.RegisterActivity
 import com.example.scmu.User
 import com.example.scmu.models.ChatMessage
+import com.example.scmu.room.Room
 import com.example.scmu.views.LatestMessageRow
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -99,7 +100,7 @@ class LatestMessagesActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 currentUser = p0.getValue(User::class.java)
-                Log.d("LatestMessages", "Current user ${currentUser?.profileImageUrl}")
+                Log.d(TAG, "Current user ${currentUser?.profileImageUrl}")
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -127,6 +128,10 @@ class LatestMessagesActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this, RegisterActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
+            R.id.menu_to_room -> {
+                val intent = Intent(this, Room::class.java)
                 startActivity(intent)
             }
         }
